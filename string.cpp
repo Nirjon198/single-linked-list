@@ -31,7 +31,7 @@ class List{
     }
     void push_back(string value)
     {
-        Node *newNode = new Node(value);
+        Node* newNode = new Node(value);
         if (head == NULL)
         {
             head = tail = newNode;
