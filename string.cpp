@@ -3,7 +3,7 @@ using namespace std;
 class Node{
     public:
     string data;
-    Node* next;
+    Node* next; // user-defined
     Node(string value){
         data=value;
         next=NULL;
@@ -27,6 +27,20 @@ class List{
             newNode->next=head;
             head=newNode;
         }
+        
+    }
+    void push_back(string value)
+    {
+        Node *newNode = new Node(value);
+        if (head == NULL)
+        {
+            head = tail = newNode;
+        }
+        else
+        {
+            tail->next = newNode;
+            tail = newNode;
+        }
     }
     void printLL(){
         Node* temp=head;
@@ -34,7 +48,7 @@ class List{
             cout<<temp->data<<" ";
             temp=temp->next;
         }
-        cout<<endl;
+        cout<<"NULL"<<endl;
     }
 };
 int main(){
@@ -43,6 +57,8 @@ int main(){
     li.push_front("SUJON");
     li.push_front("MAHIM");
     li.push_front("SHARIF");
+    li.push_back("Rabbi-01");
+    li.push_back("CR7");
     
     li.printLL();
 
