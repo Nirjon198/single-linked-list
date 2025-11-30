@@ -27,8 +27,33 @@ class List{
         }
 
 
+
+
+    }
+    void popFront()
+    {
+        if (head == NULL)
+        {
+            cout << "List is empty";
+            return;
+        }
+        Node *temp = head;
+        head = head->next;
+        temp->next = NULL;
+        delete temp;
     }
 
+    void popBack(){
+        if(head==NULL){
+            cout<<"List is empty"<<endl;
+        }
+        Node* temp=head;
+        while(temp->next!=tail){
+            temp=temp->next;
+        }
+        temp->next=NULL;
+        delete tail;
+    }
     void printL()
     {
         Node *temp = head;
@@ -44,6 +69,9 @@ int main(){
     li.pushBack(12);
     li.pushBack(123);
     li.pushBack(1234);
+    li.popFront();
+li.popBack();
+
     li.printL();
     
 }

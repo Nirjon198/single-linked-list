@@ -1,0 +1,2 @@
+    li.popFront();
+    li.printL();
