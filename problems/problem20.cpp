@@ -1,13 +1,12 @@
-// Write an algorithm that appends two lists together. Use linked list implementation.
 #include <iostream>
 using namespace std;
 class Node{
     public:
     int data;
     Node* next;
-    Node(int val){
-        data=val;
-        next= NULL;
+    Node(int value){
+        data=value;
+        next=NULL;
     }
 };
 class List{
@@ -15,64 +14,60 @@ class List{
     Node* head;
     Node* tail;
     List(){
-        head=NULL;
-        tail=NULL;
+        head=tail=NULL;
     }
-    void pushBack(int val){
-        Node* newNode=new Node(val);
+    void pushBack(int value){
+        Node* newNode=new Node(value);
         if(head==NULL){
-            head=newNode;
-            tail=newNode;
-
+            head=tail=newNode;
         }
         else{
-            tail->next=newNode;
-            tail=newNode;
+            newNode->next=head;
+            head=newNode;
         }
+
     }
-    void appended(List &other) //(class_Name &local_name_of_list2) & means the function will not copy the object.it work on original list2 object
+    void appended(List &other)
     {
-        if (head == NULL) // ব্যাখ্যা: এই লাইনটি পরীক্ষা করে যে, বর্তমান লিস্টটি (অর্থাৎ যে লিস্টের জন্য এই ফাংশনটি কল করা হয়েছে) সম্পূর্ণ খালি কি না। (head হলো বর্তমান লিস্টের প্রথম নোড)।
+        if (head == NULL)
         {
-            head=other.head;
-            tail = other.tail; // head=other.head;: বর্তমান লিস্টের head এখন other লিস্টের head-কে পয়েন্ট করবে।
-
-            /*     tail = other.tail;: বর্তমান লিস্টের tail এখন other লিস্টের tail-কে পয়েন্ট করবে।
-
-             ফলাফল: বর্তমান খালি লিস্টটি কার্যকরভাবে other লিস্টে পরিণত হয়।*/
-                
+            head = other.head;
+            tail = other.tail;
         }
-        else if(other.head !=NULL){
+        else if (other.head != NULL)
+        {   
             tail->next=other.head;
             tail=other.tail;
-            other.head = NULL;
-            other.tail = NULL;
         }
-
+        other.head=NULL;
+        other.tail=NULL;
     }
-    void temporary(){
+    void printList(){
         Node* temp=head;
-        
-         while (temp != NULL)
-        {
+        while(temp !=NULL){
             cout<<temp->data<<" ";
             temp=temp->next;
         }
-        cout<<"NULL";
+
     }
 };
- 
 int main(){
-    List li1,list2;
-    li1.pushBack(1);
-    li1.pushBack(2);
-    li1.pushBack(3);
-    cout<<"List-a : ";
-    li1.temporary();
-    cout<<"\nList-b : ";
-    list2.pushBack(4);
-    list2.pushBack(5);
+    List list1,list2;
+    list1.pushBack(1);
+    list1.pushBack(2);
+    list1.pushBack(3);
+    list1.pushBack(4);
+    list1.pushBack(5);
+    cout<<"LIST-a : ";
+
+    list1.printList();
+    cout << endl;
     list2.pushBack(6);
-    list2.temporary();
+    list2.pushBack(7);
+    list2.pushBack(8);
+    list2.pushBack(9);
+    list2.pushBack(10);
+    cout<<"LIST-b :";
+    list2.printList();
     return 0;
 }
