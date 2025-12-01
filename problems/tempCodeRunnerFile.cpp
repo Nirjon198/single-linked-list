@@ -1,2 +1,1 @@
-    li.popFront();
-    li.printL();
+li.popBack();
