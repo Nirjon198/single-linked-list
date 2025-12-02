@@ -73,6 +73,9 @@ class List{
     }
 
 
+
+
+
     void printL(){
         Node* temp=head;
         while(temp!=NULL){
@@ -93,6 +96,7 @@ int main(){
     li.pushBack(10);
     li.popFront();
     li.popBack();
+
  
     li.printL();
 }

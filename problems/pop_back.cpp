@@ -42,9 +42,26 @@ class List{
     void printl(){
         Node* temp=head;
         while(temp!=NULL){
-            cout<<temp->data<< " ";
+            cout<<temp->data<< "->";
             temp=temp->next;
         }
+        cout<<"NULL\n";
+    }
+    Node* dlt(Node* head,int position){
+        Node* temp=head;
+        if(position==1){
+            head=temp->next;
+            delete temp;
+            return head;
+        }
+        Node* prev=NULL;
+        for(int i=1;i<position;i++){
+            prev=temp;
+            temp=temp->next;
+        }
+        prev->next=temp->next;
+        delete temp;
+        return head;
     }
 
 };
@@ -58,5 +75,13 @@ int main(){
     li.pushFront(6);
     li.pushFront(7);
     li.pushBack(3000);
+    int position=3;
+    
+
+    li.head=li.dlt(li.head,position);
+    position = 5;
+    li.head=li.dlt(li.head,position);
+    position = 6;
+    li.head=li.dlt(li.head,position);
     li.printl();
 }
